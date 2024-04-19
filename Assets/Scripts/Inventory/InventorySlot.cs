@@ -8,7 +8,7 @@ public class InventorySlot : MonoBehaviour
 
     Item item;
 
-    public void AddItem (Item newItem)
+    public void AddItem(Item newItem)
     {
         item = newItem;
 
@@ -17,7 +17,7 @@ public class InventorySlot : MonoBehaviour
         removeButton.interactable = true;
     }
 
-    public void ClearSlot ()
+    public void ClearSlot()
     {
         item = null;
 
@@ -31,7 +31,7 @@ public class InventorySlot : MonoBehaviour
         Inventory.instance.Remove(item);
     }
 
-    public void UseItem ()
+    public void UseItem()
     {
         if (item != null)
         {
