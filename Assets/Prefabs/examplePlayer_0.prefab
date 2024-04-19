@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8908483969399005575}
   - component: {fileID: 5003466187360963324}
   - component: {fileID: 4934531918020156350}
-  - component: {fileID: 8063985864323068924}
+  - component: {fileID: 2916263419085158655}
   m_Layer: 0
   m_Name: examplePlayer_0
   m_TagString: Untagged
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c739724f4881bb4aab1c89f3118dbfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 0.5
   collisionOffset: 0.02
   movementFilter:
     useTriggers: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c739724f4881bb4aab1c89f3118dbfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 0.5
   collisionOffset: 0.02
   movementFilter:
     useTriggers: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!95 &8063985864323068924
+--- !u!95 &2916263419085158655
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
