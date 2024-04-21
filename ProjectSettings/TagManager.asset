@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Menu
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -12,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Menu
+  - character
   - 
   - 
   - 
@@ -42,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Interactable
-    uniqueID: 3462186325
+  - name: Player
+    uniqueID: 2167694873
+    locked: 0
+  - name: UI
+    uniqueID: 2894488913
     locked: 0
