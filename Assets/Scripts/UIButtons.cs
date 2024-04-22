@@ -1,61 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class UIButtons : MonoBehaviour
 {
+    public GameObject combatCanvas;
+    public GameObject menuCanvas;
+    public Text combatText;
+    public Button fightButton;
+    public Button actButton;
+    public Button rallyButton;
+    public Button escapeButton;
+    public float displayDuration = 10f;
 
-    public GameObject FightButton1;
-    public GameObject ActButton1;
-    public GameObject RallyButton1;
-    public GameObject EscapeButton1;
-    
-    
-
-
-    private bool isToggling = false;
     private int currentState = 0;
+
     public void ToggleVisibility()
     {
-        GameObject combatCanvasObj = GameObject.Find("CombatCanvas");
-        GameObject menuCanvasObj = GameObject.Find("MenuCanvas");
+        combatCanvas.SetActive(currentState == 0);
+        menuCanvas.SetActive(currentState == 1);
 
-        if (combatCanvasObj == null)
-        {
-            Debug.LogError("CombatCanvas is not assigned!");
-            return;
-        }
-
-        if (menuCanvasObj == null)
-        {
-            Debug.LogError("MenuCanvas is not assigned!");
-            return;
-        }
-
-        Canvas combatCanvas = combatCanvasObj.GetComponent<Canvas>();
-        Canvas menuCanvas = menuCanvasObj.GetComponent<Canvas>();
-
-        if (combatCanvas == null)
-        {
-            Debug.LogError("CombatCanvas is missing Canvas component!");
-            return;
-        }
-
-        if (menuCanvas == null)
-        {
-            Debug.LogError("MenuCanvas is missing Canvas component!");
-            return;
-        }
-
-        // Ensure combat canvas is always active
-        combatCanvas.enabled = true;
-
-        // Toggle visibility based on the current state
-        combatCanvas.enabled = currentState == 0;
-        menuCanvas.enabled = currentState == 1;
-
-        // Log the toggling action
         if (currentState == 0)
         {
             Debug.Log("Toggling visibility: Combat Canvas On, Menu Canvas Off");
@@ -65,33 +29,40 @@ public class UIButtons : MonoBehaviour
             Debug.Log("Toggling visibility: Combat Canvas Off, Menu Canvas On");
         }
 
-        // Switch the state systematically
         currentState = 1 - currentState;
     }
 
-
-
-
-
-
-
-
-
-    void FightButton()
+    public void FightButton()
     {
-
+        StartCoroutine(DisplayCombatText("Combat Started!"));
     }
-    void ActButton()
-    {
 
+    public void ActButton()
+    {
+        Debug.Log("Act button clicked!");
+
+        fightButton.gameObject.SetActive(false);
+        rallyButton.gameObject.SetActive(false);
+        escapeButton.gameObject.SetActive(false);
+
+        StartCoroutine(DisplayCombatText("Act button clicked!"));
     }
-    void RallyButton()
-    {
 
+    public void RallyButton()
+    {
+        Debug.Log("Rally button clicked!");
     }
-    void EscapeButton()
-    {
 
+    public void EscapeButton()
+    {
+        Debug.Log("Escape button clicked!");
+    }
+
+    IEnumerator DisplayCombatText(string text)
+    {
+        combatText.gameObject.SetActive(true);
+        combatText.text = text;
+        yield return new WaitForSeconds(displayDuration);
+        combatText.gameObject.SetActive(false);
     }
 }
-
