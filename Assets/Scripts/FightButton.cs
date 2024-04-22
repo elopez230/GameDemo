@@ -10,7 +10,7 @@ public class FightButton : MonoBehaviour
     public int canvasSortingOrder = 1;      // Sorting order for the instantiated images
     public float distanceFromCamera = 5f;   // Distance from the camera to place the prefabs
     public float displayDuration = 3f;      // Duration to display the prefabs before hiding them
-
+    
     private Button button;
     private Canvas activeCanvas;            // Reference to the active canvas
 
@@ -22,7 +22,10 @@ public class FightButton : MonoBehaviour
 
     void OnClick()
     {
+        
         Debug.Log("Fight button clicked!");
+
+
 
         // Find the active canvas in the scene
         activeCanvas = FindObjectOfType<Canvas>();
@@ -84,6 +87,8 @@ public class FightButton : MonoBehaviour
         {
             Debug.LogError("No active canvas found in the scene!");
         }
+
+        
     }
 
     IEnumerator HideAfterDuration(GameObject imageInstance, GameObject textInstance)
@@ -93,5 +98,20 @@ public class FightButton : MonoBehaviour
         // Destroy the instantiated prefabs
         Destroy(imageInstance);
         Destroy(textInstance);
+    }
+
+    public static IEnumerator showDamage(int damage)
+    {
+        yield return new WaitForSeconds(getDisplayDuration());
+    }
+
+    public static int getDisplayDuration()
+    {
+        return getDisplayDuration();
+    }
+
+    public static void setTextPrefab(string message)
+    {
+
     }
 }
