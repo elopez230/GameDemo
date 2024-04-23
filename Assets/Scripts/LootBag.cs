@@ -5,13 +5,14 @@ using UnityEngine;
 public class LootBag : MonoBehaviour
 {
 
-    public List<Loot> lootList = new List<Loot>();
+    public List<Item> lootList = new List<Item>();
+    public string itemName;
  
-    Loot GetDroppedItem()
+    Item GetDroppedItem()
     {
         int randomNumber = Random.Range(1, 101);
-        List<Loot> possibleItems = new List<Loot>();
-        foreach (Loot item in lootList)
+        List<Item> possibleItems = new List<Item>();
+        foreach (Item item in lootList)
         {
             if (randomNumber <= item.dropChance)
             {
@@ -20,7 +21,8 @@ public class LootBag : MonoBehaviour
         }
         if (possibleItems.Count > 0)
         {
-            Loot droppedItem = possibleItems[Random.Range(0, possibleItems.Count)];
+            Item droppedItem = possibleItems[Random.Range(0, possibleItems.Count)];
+            itemName = droppedItem.name;
             return droppedItem;
         }
         Debug.Log("No loot dropped");
@@ -31,6 +33,8 @@ public class LootBag : MonoBehaviour
     // Code spawning the item to inventory will still be needed
     public void InstantiateLoot()
     {
-        Loot droppedItem = GetDroppedItem();
+        Item droppedItem = GetDroppedItem();// Where Item gets passed
+        Debug.Log("Dropped " + itemName);
+        Inventory.instance.Add(droppedItem);// Adds item to inventory
     }
 }

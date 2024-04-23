@@ -1,22 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
-public class NewBehaviourScript : ColliderObject
+
+public class NewBehaviourScript : MonoBehaviour
 {
-    private bool z_Interacted = false;
-    protected override void OnCollided(GameObject collidedObject)
+    public bool isInRange;
+    public KeyCode interactKey;
+    public UnityEvent interactAction;
+
+    void Start()
     {
-        if (Input.GetKeyUp(KeyCode.E))
+        
+    }
+
+    void Update()
+    {
+        if (isInRange)
         {
-            OnInteract();
+            if (Input.GetKeyDown(interactKey))
+            {
+                interactAction.Invoke();
+            }
         }
     }
 
-    protected virtual void OnInteract()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!z_Interacted)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            z_Interacted = true;
-            Debug.Log("Interacted with " + name);
+            isInRange = true;
+            Debug.Log("Player is now in range");
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isInRange = false;
+            Debug.Log("Player is not in range");
+        }
+    }
+
+
+
 }

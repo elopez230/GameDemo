@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 7354401298332819284}
   - component: {fileID: 3562826017089512886}
   - component: {fileID: 2945720614341305237}
-  - component: {fileID: -4556357977058671050}
   - component: {fileID: 8908483969399005575}
   - component: {fileID: 5003466187360963324}
   - component: {fileID: 4934531918020156350}
-  - component: {fileID: 2916263419085158655}
+  - component: {fileID: 8587093710697139438}
   m_Layer: 0
   m_Name: examplePlayer_0
   m_TagString: Untagged
@@ -32,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1683103445537450640}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4025958, y: 0.58290625, z: 1}
+  m_LocalPosition: {x: -1.4025958, y: 0.58290625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -91,34 +90,6 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2945720614341305237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683103445537450640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c739724f4881bb4aab1c89f3118dbfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0.5
-  collisionOffset: 0.02
-  movementFilter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 1
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
---- !u!114 &-4556357977058671050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,7 +219,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!95 &2916263419085158655
+--- !u!95 &8587093710697139438
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

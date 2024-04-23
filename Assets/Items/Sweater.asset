@@ -15,3 +15,7 @@ MonoBehaviour:
   name: Sweater
   icon: {fileID: 0}
   isDefualtItem: 0
+  dropChance: 20
+  equipSlot: 0
+  armorModifier: 0
+  damageModifier: 0

@@ -10,14 +10,14 @@ public class Item : ScriptableObject
     public bool isDefualtItem = false;
     public int dropChance;
 
-    public virtual void Use ()
+    public virtual void Use () // Can be called and overriden
     {
         // Use the item
 
         Debug.Log("Using " + name);
     }
     
-    public void MoveItem()
+    public void MoveItem ()
     {
 
     }

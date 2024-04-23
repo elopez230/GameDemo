@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
 
-    public bool Add (Item item)
+    public bool Add (Item item) // Add item to inventory
     {
         if (!item.isDefualtItem)
         {
@@ -49,7 +49,7 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public void Remove (Item item)
+    public void Remove (Item item) // Remove Item from inventory
     {
         items.Remove(item);
 
