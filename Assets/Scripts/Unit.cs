@@ -12,8 +12,14 @@ public class Unit : MonoBehaviour
 
     public bool takeDamage(int damage)
     {
+
         currentHP -= damage;
-        if (currentHP <= 0) 
+        if (currentHP < 0)
+        {
+            currentHP = 0;
+            return true;
+        } 
+        else if (currentHP == 0) 
         {
             return true;
         }
@@ -21,5 +27,14 @@ public class Unit : MonoBehaviour
         {
             return false;
         }
+    }
+    public void healDamage(int damage)
+    {
+        currentHP += damage;
+        if (currentHP > unitHP) 
+        {
+            currentHP = unitHP;
+        }
+       
     }
 }

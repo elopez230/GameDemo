@@ -10,7 +10,7 @@ public class FightButton : MonoBehaviour
     public int canvasSortingOrder = 1;      // Sorting order for the instantiated images
     public float distanceFromCamera = 5f;   // Distance from the camera to place the prefabs
     public float displayDuration = 3f;      // Duration to display the prefabs before hiding them
-    
+
     private Button button;
     private Canvas activeCanvas;            // Reference to the active canvas
 
@@ -22,9 +22,10 @@ public class FightButton : MonoBehaviour
 
     void OnClick()
     {
-        
-        Debug.Log("Fight button clicked!");
 
+        int damage = battleSystem.getDamageDone();
+        
+        
 
 
         // Find the active canvas in the scene
@@ -52,6 +53,7 @@ public class FightButton : MonoBehaviour
 
             // Instantiate the text prefab as a child of the active canvas
             GameObject textInstance = Instantiate(textPrefab, activeCanvas.transform);
+      
             // Set the local position of the text prefab to match its intended position on the canvas
             RectTransform textRectTransform = textInstance.GetComponent<RectTransform>();
             // Set the local position based on your desired values
@@ -60,13 +62,13 @@ public class FightButton : MonoBehaviour
             textRectTransform.sizeDelta = new Vector2(50f, 10f); // Adjust width and height as desired for smaller size
 
             // Get the Text component of the text prefab
+            //Colin Please put sample text added here. I can't figure out what you mean
             Text textComponent = textInstance.GetComponent<Text>();
-
             if (textComponent != null)
             {
                 textComponent.fontSize = 8;
             }// Adjust the font size as desired for smaller text
-            
+
             // Set the canvas sorting order of both prefabs
             Canvas canvas = imageInstance.GetComponent<Canvas>();
             if (canvas != null)
@@ -88,7 +90,7 @@ public class FightButton : MonoBehaviour
             Debug.LogError("No active canvas found in the scene!");
         }
 
-        
+
     }
 
     IEnumerator HideAfterDuration(GameObject imageInstance, GameObject textInstance)
@@ -100,18 +102,5 @@ public class FightButton : MonoBehaviour
         Destroy(textInstance);
     }
 
-    public static IEnumerator showDamage(int damage)
-    {
-        yield return new WaitForSeconds(getDisplayDuration());
-    }
-
-    public static int getDisplayDuration()
-    {
-        return getDisplayDuration();
-    }
-
-    public static void setTextPrefab(string message)
-    {
-
-    }
+   
 }

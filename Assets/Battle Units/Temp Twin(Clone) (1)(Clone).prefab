@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: TEMP
-  unitHP: 0
-  currentHP: 0
-  maxAttack: 0
+  unitHP: 20
+  currentHP: 20
+  maxAttack: 4
   name: Twin
 --- !u!1 &4942992809544239325
 GameObject:
