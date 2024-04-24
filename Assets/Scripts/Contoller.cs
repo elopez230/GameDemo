@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class Contoller : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class Contoller : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (movementInput != Vector2.zero) {
             bool success = TryMove(movementInput);
 

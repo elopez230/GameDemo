@@ -15,8 +15,8 @@ public class Equipment : Item
     {
         base.Use();
         EquipmentManager.instance.Equip(this);
+        //InventoryUI.instance.moveItem(InventorySlot.slots, 17);
         // Do not remove item from inventory, Send item to proper inventory slot
-        MoveItem(); // Incomplete method, Location: Item.cs
     }
 }
 

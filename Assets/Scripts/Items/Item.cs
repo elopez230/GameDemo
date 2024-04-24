@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
 public class Item : ScriptableObject
 {
+
     // This is the blueprint for our scriptable object
 
     new public string name = "New Item";
@@ -17,9 +18,10 @@ public class Item : ScriptableObject
         Debug.Log("Using " + name);
     }
     
-    public void MoveItem ()
-    {
 
+    public bool IsStackable()
+    {
+        return false;
     }
 
   

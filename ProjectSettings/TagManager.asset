@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Inventory
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,9 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2894488913
+    locked: 0
+  - name: Interactable
+    uniqueID: 1604882363
     locked: 0
   - name: Player
     uniqueID: 2167694873

@@ -12,14 +12,20 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
 
+    InventoryUI inventoryUI;
+
     private Queue<string> sentences;
     void Start()
     {
         sentences = new Queue<string>();
+
+        // Gets inventoryUI methods to change inventory display with dialogue
+        inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryUI>();
     }
 
     public void StartDialogue (Dialogue dialogue)
     {
+        inventoryUI.DialogueActive();
         Debug.Log("Starting Conversation with " + dialogue.name);
 
         animator.SetBool("IsOpen", true);
@@ -38,7 +44,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence ()
     {
-        if (sentences.Count > 0)
+        if (sentences.Count == 0)
         {
             EndDialogue();
             return;

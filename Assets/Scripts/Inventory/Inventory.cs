@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
-    public List<Item> items = new List<Item>();
+    public List<Item> items = new List<Item>(); // Inventory
 
     public bool Add (Item item) // Add item to inventory
     {
@@ -58,4 +58,13 @@ public class Inventory : MonoBehaviour
             onItemChangedCallback.Invoke();
         }
     }
+
+    public void ScanInventory()
+    {
+        foreach (Item item in items)
+        {
+            Debug.Log("Item: " + item.name);
+        }
+    }
+
 }
