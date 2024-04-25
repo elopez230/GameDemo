@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
-    public List<Item> items = new List<Item>(); // Inventory
+    public List<Item> items = new List<Item>();
 
     public bool Add (Item item) // Add item to inventory
     {
@@ -47,6 +47,22 @@ public class Inventory : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void moveItem(Item item, int slotIndex)
+    {
+        if (slotIndex >= 0 && slotIndex < items.Count)
+        {
+            items[slotIndex] = item;
+            if (onItemChangedCallback != null )
+            {
+                onItemChangedCallback.Invoke();
+            }
+        }
+        else
+        {
+            Debug.Log("Invalid slot");
+        }
     }
 
     public void Remove (Item item) // Remove Item from inventory

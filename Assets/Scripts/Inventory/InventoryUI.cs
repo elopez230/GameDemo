@@ -53,9 +53,9 @@ public class InventoryUI : MonoBehaviour
         Debug.Log("UPDATING UI");
     }
 
-    public void moveItem(Item item, int slot)
+    public void moveEquipment(Item item, int slotIndex) // Not being passed as an item
     {
-        slots[slot].AddItem(item);
+        slots[slotIndex].AddItem(item);
     }
 
 

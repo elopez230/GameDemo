@@ -25,17 +25,20 @@ public class battleSystem : MonoBehaviour
     public TMP_Text playerHP;
     static public int damageDone;
     bool attackBuff;
+
+    NPCscript npcScript;
     
 
     void Start()
     {
-        state = battleState.START;
-        setupBattle();
-        attackBuff = false;
+        npcScript = GameObject.FindGameObjectWithTag("NPC").GetComponent<NPCscript>();
     }
 
-    void setupBattle()
+    public void setupBattle()
     {
+        state = battleState.START;
+        attackBuff = false;
+
         damageDone = 0;
         GameObject playerGO = Instantiate(player, EnemySpawn);
         playerUnit = playerGO.GetComponent<Unit>();
@@ -101,9 +104,11 @@ public class battleSystem : MonoBehaviour
 
     void endBattle()
     {
+        npcScript.NpcDead();
         //Eli this is where we need to return back to open world
         if(state == battleState.WON)
         {
+
             Debug.Log("Thank you so much for participating in my playtest!");
         }
         else
