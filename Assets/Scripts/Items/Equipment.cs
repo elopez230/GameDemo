@@ -6,16 +6,26 @@ using UnityEngine;
 public class Equipment : Item
 {
 
+    InventoryUI inventoryUI;
+
+
     public int equipSlot;
 
     public int armorModifier;
     public int damageModifier;
 
+    void Start()
+    {
+        inventoryUI = InventoryUI.instance;
+    }
+
     public override void Use()
     {
+        Start();
         base.Use();
         EquipmentManager.instance.Equip(this);
-        //InventoryUI.instance.moveItem(InventorySlot.slots, 17);
+        RemoveFromInventory();
+        InventoryUI.instance.moveEquipment(this, 17); // Cant be this has to be item
         // Do not remove item from inventory, Send item to proper inventory slot
     }
 }

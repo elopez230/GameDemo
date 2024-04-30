@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 
-public class NewBehaviourScript : MonoBehaviour
+public class Interactable : MonoBehaviour
 {
     public bool isInRange;
     public KeyCode interactKey;

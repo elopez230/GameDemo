@@ -20,22 +20,26 @@ public class battleSystem : MonoBehaviour
     Unit enemyUnit;
 
     public Transform EnemySpawn;
-   
+    public TMP_Text popUp;
     public TMP_Text enemyHP;
     public TMP_Text playerHP;
     static public int damageDone;
     bool attackBuff;
+    public FightButton popUpMethod;
+
+    NPCscript npcScript;
     
 
     void Start()
     {
-        state = battleState.START;
-        setupBattle();
-        attackBuff = false;
+        npcScript = GameObject.FindGameObjectWithTag("NPC").GetComponent<NPCscript>();
     }
 
-    void setupBattle()
+    public void setupBattle()
     {
+        state = battleState.START;
+        attackBuff = false;
+
         damageDone = 0;
         GameObject playerGO = Instantiate(player, EnemySpawn);
         playerUnit = playerGO.GetComponent<Unit>();
@@ -47,6 +51,10 @@ public class battleSystem : MonoBehaviour
 
         state = battleState.PLAYERTURN;
         Debug.Log("Your Turn");
+    }
+    void textUpdate(string updateMes, TMP_Text location) // Or other method
+    {
+        location.SetText(updateMes);
     }
 
     void battleUpdate(string updateMes, TMP_Text location) // Or other method
@@ -68,7 +76,7 @@ public class battleSystem : MonoBehaviour
     }
 
     IEnumerator playerAttack()
-    { 
+    {
         damageDone = Random.Range(1, playerUnit.maxAttack);
         bool dead = false;
 
@@ -76,18 +84,58 @@ public class battleSystem : MonoBehaviour
         {
             damageDone = damageDone + 2;
         }
-        dead = enemyUnit.takeDamage(damageDone);
-        Debug.Log("You deal " + damageDone + " damage");
 
-        battleUpdate(("Your HP: " + playerUnit.currentHP), playerHP);
+        int d20Roll = Random.Range(1, 20);
 
-        yield return new WaitForSeconds(2f);
+        if (d20Roll == 1)
+        {
+            dead = playerUnit.takeDamage(damageDone);
+            textUpdate(("Critical Failure:\n You Take " + damageDone + " Damage"), popUp);
+            textUpdate(("Your HP: " + playerUnit.currentHP), playerHP);
+            if (dead)
+            {
+                state = battleState.LOST;
+            }
+            else
+            {
+                state = battleState.ENEMYTURN;
+                enemyAttack();
+            }
 
-        if (dead)
+        }
+        else if (d20Roll <= 3 && d20Roll != 1)
+        {
+            textUpdate(("You Miss"), popUp);
+        }
+        else
+        {
+            d20Roll = Random.Range(1, 20);
+
+            if (d20Roll >= 19)
+            {
+                dead = enemyUnit.takeDamage(2 * damageDone);
+
+                textUpdate((enemyUnit.name + " HP: " + enemyUnit.currentHP), enemyHP);
+                textUpdate(("Critical Hit:\nYou Deal " + (2 * damageDone) + " Damage"), popUp);
+                Debug.Log("Player CAtack");
+            }
+            else
+            {
+                dead = enemyUnit.takeDamage(damageDone);
+
+                textUpdate((enemyUnit.name + " HP: " + enemyUnit.currentHP), enemyHP);
+                textUpdate(("You Deal " + (damageDone) + " Damage"), popUp);
+                Debug.Log("Player NAtack");
+            }
+        }
+
+
+        yield return new WaitForSeconds(3f);
+
+
+        if (dead && d20Roll != 1)
         {
             state = battleState.WON;
-            endBattle();
-            Debug.Log("You Win");
         }
         else
         {
@@ -95,15 +143,15 @@ public class battleSystem : MonoBehaviour
             enemyAttack();
         }
 
-        
-
     }
 
     void endBattle()
     {
+        npcScript.NpcDead();
         //Eli this is where we need to return back to open world
         if(state == battleState.WON)
         {
+
             Debug.Log("Thank you so much for participating in my playtest!");
         }
         else
@@ -120,22 +168,67 @@ public class battleSystem : MonoBehaviour
     void enemyAttack()
     {
 
-        Debug.Log("Enemy Turn");
-        damageDone = Random.Range(1, enemyUnit.maxAttack);
-        bool dead = playerUnit.takeDamage(damageDone);
-        battleUpdate((enemyUnit.name + " HP: " + enemyUnit.currentHP), enemyHP);
-        Debug.Log("You take " + damageDone + " damage");
 
+        damageDone = Random.Range(1, enemyUnit.maxAttack);
+        bool dead = false;
+
+        if (attackBuff)
+        {
+            damageDone = damageDone + 2;
+        }
+
+        int d20Roll = Random.Range(1, 20);
+
+        if (d20Roll == 1)
+        {
+            dead = enemyUnit.takeDamage(damageDone);
+            textUpdate(("Critical Failure:\nEnemy Takes " + damageDone + " Damage"), popUp);
+            textUpdate((enemyUnit.name + " HP: " + enemyUnit.currentHP), enemyHP);
+            popUpMethod.OnClick();
+            if (dead)
+            {
+                state = battleState.WON;
+            }
+            else
+            {
+                state = battleState.PLAYERTURN;
+            }
+
+        }
+        else if (d20Roll <= 3 && d20Roll != 1)
+        {
+            textUpdate(("Enemy Misses"), popUp);
+            popUpMethod.OnClick();
+        }
+        else
+        {
+            d20Roll = Random.Range(1, 20);
+
+            if (d20Roll >= 19)
+            {
+                dead = playerUnit.takeDamage(2 * damageDone);
+                textUpdate(("Your HP: " + playerUnit.currentHP), playerHP);
+                textUpdate(("Critical Hit: \n" + enemyUnit.name + " Deals " + (2 * damageDone) + " Damage"), popUp);
+                popUpMethod.OnClick();
+                Debug.Log("Enemy CAtack");
+            }
+            else
+            {
+                dead = playerUnit.takeDamage(damageDone);
+
+                textUpdate(("Your HP: " + playerUnit.currentHP), playerHP);
+                textUpdate((enemyUnit.name + " Deals " + (damageDone) + " Damage"), popUp);
+                popUpMethod.OnClick();
+                Debug.Log("Enemy CAtack");
+            }
+        }
         if (dead)
         {
             state = battleState.LOST;
-            Debug.Log("You lose :(");
-            endBattle();
         }
         else
         {
             state = battleState.PLAYERTURN;
-            Debug.Log("Your Turn");
         }
     }
 
