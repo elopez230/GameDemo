@@ -20,7 +20,7 @@ public class FightButton : MonoBehaviour
         button.onClick.AddListener(OnClick);
     }
 
-    void OnClick()
+    public void OnClick()
     {
 
         int damage = battleSystem.getDamageDone();
@@ -49,7 +49,7 @@ public class FightButton : MonoBehaviour
             imageRectTransform.offsetMin = new Vector2(-0.05f, -0.05f);
             imageRectTransform.offsetMax = new Vector2(0.05f, 0.05f);
             // Set the sizeDelta to adjust the scaling of the image
-            imageRectTransform.sizeDelta = new Vector2(50f, 50f);
+            imageRectTransform.sizeDelta = new Vector2(100f, 50f);
 
             // Instantiate the text prefab as a child of the active canvas
             GameObject textInstance = Instantiate(textPrefab, activeCanvas.transform);
