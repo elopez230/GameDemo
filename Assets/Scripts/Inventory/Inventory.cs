@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+
+    // Singleton for an instance of inventory so other classes can have access
     #region Singleton
 
     public int space = 25;
@@ -75,7 +77,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void ScanInventory()
+    public void ScanInventory() // Reads all items in inventory
     {
         foreach (Item item in items)
         {

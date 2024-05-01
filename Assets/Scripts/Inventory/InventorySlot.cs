@@ -8,6 +8,7 @@ public class InventorySlot : MonoBehaviour
 
     Item item;
 
+    // Adds item to the slot
     public void AddItem(Item newItem)
     {
         item = newItem;
@@ -17,6 +18,7 @@ public class InventorySlot : MonoBehaviour
         removeButton.interactable = true;
     }
 
+    // Sets individual slot to null/ resets
     public void ClearSlot()
     {
         item = null;

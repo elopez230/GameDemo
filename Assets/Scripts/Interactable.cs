@@ -16,6 +16,7 @@ public class Interactable : MonoBehaviour
         
     }
 
+    // When the key that is assigned in unity is pressed this if statement will occur
     void Update()
     {
         if (isInRange)
@@ -27,6 +28,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    // This is to test if the player is in range to interact or not
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -36,6 +38,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    // This is to test if the player is in range to interact or not
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

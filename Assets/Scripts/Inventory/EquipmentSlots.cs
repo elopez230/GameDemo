@@ -8,6 +8,7 @@ public class EquipmentSlots : MonoBehaviour
 
     Item item;
 
+    // Add item to the item class
     public void AddItem(Item newItem)
     {
         item = newItem;
@@ -17,6 +18,7 @@ public class EquipmentSlots : MonoBehaviour
         removeButton.interactable = true;
     }
 
+    // Makes the inventory slot empty
     public void ClearSlot()
     {
         item = null;
@@ -26,6 +28,7 @@ public class EquipmentSlots : MonoBehaviour
         removeButton.interactable = false;
     }
 
+    // Removes Item from inventory
     public void OnRemoveButton ()
     {
         Inventory.instance.Remove(item);

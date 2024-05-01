@@ -38,6 +38,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    // Adds items to inventory slots and clears inventory slots
     void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -55,7 +56,7 @@ public class InventoryUI : MonoBehaviour
 
     public void moveEquipment(Item item, int slotIndex) // Not being passed as an item
     {
-        slots[slotIndex].AddItem(item);
+        slots[slotIndex].AddItem(item); // This statement has problems
     }
 
 

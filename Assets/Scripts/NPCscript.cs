@@ -10,16 +10,16 @@ public class NPCscript : MonoBehaviour
 
     public Animator animator;
 
+    // At start of game NPC status set to alive
     void Start()
     {
         animator.SetBool("IsAlive", true);
-        //animator.SetBool("IsAlive2", true);
     }
 
+    // Method to use NPC death animation
     public void NpcDead()
     {
         animator.SetBool("IsAlive", false);
-        //animator.SetBool("IsAlive2", false);
     }
 
     void Update()

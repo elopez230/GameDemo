@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
 {
+
+    // Singleton to call an instance of EquipmentManager
     #region Singleton
 
     public static EquipmentManager instance;
@@ -28,6 +30,7 @@ public class EquipmentManager : MonoBehaviour
     }
 
     // This will equip items into the corresponding slots
+    // The slots the equipment will be moved into is in the equipment manager / currentEquipment array
     public void Equip (Equipment newItem)
     {
         int slotIndex = (int)newItem.equipSlot;

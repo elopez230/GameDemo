@@ -55,6 +55,7 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
+    // Displays all the characters one at a time
     IEnumerator TypeSentence (string sentence)
     {
         dialogueText.text = "";

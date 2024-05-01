@@ -26,9 +26,11 @@ public class Contoller : MonoBehaviour
     private void FixedUpdate()
     {
 
+        // If the mouse pointer is over ui the player cant move
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
+        // If statements for movement
         if (movementInput != Vector2.zero) {
             bool success = TryMove(movementInput);
 
@@ -49,6 +51,7 @@ public class Contoller : MonoBehaviour
         }
     }
 
+    // Method for moving the player
     private bool TryMove(Vector2 direction)
     {
         if (direction != Vector2.zero)
@@ -62,7 +65,7 @@ public class Contoller : MonoBehaviour
 
             if (count == 0)
             {
-
+                // Statement that move the player
                 rb.MovePosition(rb.position + (direction * moveSpeed * Time.fixedDeltaTime));
                 return true;
             }
@@ -76,6 +79,7 @@ public class Contoller : MonoBehaviour
         }
     }
 
+    // Method for player animator
     public void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();

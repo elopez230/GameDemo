@@ -8,6 +8,7 @@ public class LootBag : MonoBehaviour
     public List<Item> lootList = new List<Item>();
     public string itemName;
  
+    // Randomizes the dropped item from possible items
     Item GetDroppedItem()
     {
         int randomNumber = Random.Range(1, 101);
@@ -30,7 +31,6 @@ public class LootBag : MonoBehaviour
     }
 
     // This will be called when a chest is opened
-    // Code spawning the item to inventory will still be needed
     public void InstantiateLoot()
     {
         Item droppedItem = GetDroppedItem();// Where Item gets passed

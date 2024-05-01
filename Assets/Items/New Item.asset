@@ -15,3 +15,4 @@ MonoBehaviour:
   name: New Item
   icon: {fileID: 0}
   isDefualtItem: 0
+  dropChance: 10

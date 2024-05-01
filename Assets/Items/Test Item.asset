@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Test Item
   icon: {fileID: 21300000, guid: 682e13ea41d7b14418d2a1749ce24391, type: 3}
   isDefualtItem: 0
-  dropChance: 100
+  dropChance: 90

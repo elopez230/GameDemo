@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4228549656980853199}
   - component: {fileID: 2688343378538998903}
   - component: {fileID: 8964937552515678879}
-  - component: {fileID: 7763540209759312628}
+  - component: {fileID: 3586647330919120376}
+  - component: {fileID: 445248687935130804}
   - component: {fileID: 3085827137935097596}
   m_Layer: 0
   m_Name: Chest
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   animator: {fileID: 3085827137935097596}
---- !u!114 &7763540209759312628
+--- !u!114 &3586647330919120376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,11 +158,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 8135063571133490147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7004429738b3e7741a467c3b845d8f38, type: 3}
+  m_Script: {fileID: 11500000, guid: c5a4858b2a641af4aa9978b9c980564f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lootList:
   - {fileID: 11400000, guid: a532445d4b71b494888e2168c5ebbeaa, type: 2}
+  - {fileID: 11400000, guid: fda576e26dbf53842824e02149d59455, type: 2}
+  - {fileID: 11400000, guid: ecd6be1628928fa47845c1b5a28443df, type: 2}
+  - {fileID: 11400000, guid: 17e8b1101439273448f9c111efe5c2f3, type: 2}
+  itemName: 
+--- !u!114 &445248687935130804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8135063571133490147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a4858b2a641af4aa9978b9c980564f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootList:
+  - {fileID: 11400000, guid: a532445d4b71b494888e2168c5ebbeaa, type: 2}
+  - {fileID: 11400000, guid: fda576e26dbf53842824e02149d59455, type: 2}
   - {fileID: 11400000, guid: ecd6be1628928fa47845c1b5a28443df, type: 2}
   - {fileID: 11400000, guid: 17e8b1101439273448f9c111efe5c2f3, type: 2}
   itemName: 
