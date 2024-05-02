@@ -232,25 +232,42 @@ public class battleSystem : MonoBehaviour
         }
     }
 
-    public void playerRally()
+    public void onRallyButton()
+    {
+
+        if (state != battleState.PLAYERTURN)
+        {
+            return;
+        }
+
+        StartCoroutine(playerRally());
+
+    }
+
+    public IEnumerator playerRally()
     {
         int choice = Random.Range(1, 3);
         if (choice == 1)
         {
             int heal = Random.Range(1, 3);
             playerUnit.healDamage(heal);
-            Debug.Log("You gain back " + heal + " health");
+            textUpdate("You gain back " + heal + " health", popUp);
+            popUpMethod.OnClick();
+            
         }
         else if (choice == 2)
         {
-            Debug.Log("You will deal 2 more damage next attack");
+            textUpdate("You will deal 2 more damage next attack", popUp);
             attackBuff = true;
+            popUpMethod.OnClick();
         }
         else
         {
-            Debug.Log("Currently you gain nothing");
+            textUpdate("You gain nothing", popUp);
+            popUpMethod.OnClick();
         }
-        
+
+        yield return new WaitForSeconds(3f);
 
         state = battleState.ENEMYTURN;
         enemyAttack();
