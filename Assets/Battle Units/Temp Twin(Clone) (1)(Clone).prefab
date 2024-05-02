@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2127272423
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -14747456, guid: d315d7d598c3d8848936f9199e629f60, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,6 +103,9 @@ MonoBehaviour:
   currentHP: 20
   maxAttack: 4
   name: Twin
+  actItem: {fileID: 11400000, guid: fda576e26dbf53842824e02149d59455, type: 2}
+  itemReaction: We will take that instead/n of fighting
+  failedReaction: If you had some money/nwe don't have to fight
 --- !u!1 &4942992809544239325
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2127272423
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 601484a8a220b2c41acfd020916c6db5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -205,3 +208,6 @@ MonoBehaviour:
   currentHP: 20
   maxAttack: 6
   name: 
+  actItem: {fileID: 0}
+  itemReaction: 
+  failedReaction: 

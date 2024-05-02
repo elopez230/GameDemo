@@ -26,6 +26,11 @@ public class battleSystem : MonoBehaviour
     static public int damageDone;
     bool attackBuff;
     public FightButton popUpMethod;
+    Inventory items = Inventory.instance;
+    Item actItem;
+    string reaction;
+    string failed;
+
 
     NPCscript npcScript;
     
@@ -33,11 +38,13 @@ public class battleSystem : MonoBehaviour
     void Start()
     {
         npcScript = GameObject.FindGameObjectWithTag("NPC").GetComponent<NPCscript>();
+
     }
 
     public void setupBattle()
-    {
+    {   
         state = battleState.START;
+        
         attackBuff = false;
 
         damageDone = 0;
@@ -50,7 +57,11 @@ public class battleSystem : MonoBehaviour
         battleUpdate((enemyUnit.name + " HP: " + enemyUnit.currentHP), enemyHP);
 
         state = battleState.PLAYERTURN;
+        actItem = enemyUnit.getItem();
         Debug.Log("Your Turn");
+        items = Inventory.instance;
+        reaction = enemyUnit.getReaction();
+        failed = enemyUnit.getFailed();
     }
     void textUpdate(string updateMes, TMP_Text location) // Or other method
     {
@@ -272,6 +283,42 @@ public class battleSystem : MonoBehaviour
         state = battleState.ENEMYTURN;
         enemyAttack();
 
+    }
+
+    public void onActButton()
+    {
+
+        if (state != battleState.PLAYERTURN)
+        {
+            return;
+        }
+
+        StartCoroutine(playerAct());
+
+    }
+
+    IEnumerator playerAct()
+    {
+        int amount = items.ScanSpecific(actItem);
+        Debug.Log(amount);
+
+        if (amount >= 1)
+        {
+            
+            textUpdate(reaction, popUp);
+            popUpMethod.OnClick();
+            yield return new WaitForSeconds(3f);
+            endBattle();
+            items.Remove(actItem);
+        }
+        else
+        {
+            textUpdate(failed, popUp);
+            popUpMethod.OnClick();
+            yield return new WaitForSeconds(3f);
+            enemyAttack();
+        }
+        
     }
 
 

@@ -85,4 +85,16 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public int ScanSpecific(Item specific) // Reads for a specific item type 
+    {
+        int temp = 0;
+        foreach (Item item in items)
+        {
+            if (item == specific) {
+                temp = temp + 1;
+            }
+        }
+        return temp;
+    }
+
 }

@@ -9,6 +9,9 @@ public class Unit : MonoBehaviour
     public int maxAttack;
 
     public string name;
+    public Item actItem;
+    public string itemReaction;
+    public string failedReaction;
 
     public bool takeDamage(int damage)
     {
@@ -37,4 +40,13 @@ public class Unit : MonoBehaviour
         }
        
     }
+    public Item getItem()
+    {
+        return actItem;
+    }
+    public string getReaction()
+    {
+        return itemReaction;
+    }
+    public string getFailed() { return failedReaction;}
 }

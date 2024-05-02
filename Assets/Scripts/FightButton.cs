@@ -59,7 +59,7 @@ public class FightButton : MonoBehaviour
             // Set the local position based on your desired values
             textRectTransform.localPosition = new Vector3(0.5f, 0.5f, 0f);
             // Set the sizeDelta to adjust the size of the text rectangle
-            textRectTransform.sizeDelta = new Vector2(50f, 10f); // Adjust width and height as desired for smaller size
+            textRectTransform.sizeDelta = new Vector2(100f, 50f); // Adjust width and height as desired for smaller size
 
             // Get the Text component of the text prefab
             //Colin Please put sample text added here. I can't figure out what you mean
