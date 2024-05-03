@@ -157,8 +157,9 @@ public class battleSystem : MonoBehaviour
     void endBattle()
     {
         npcScript.NpcDead();
+        FindObjectOfType<ToggleCanvasOnKeyPress>().ChangeVisiablity();
         //Eli this is where we need to return back to open world
-        if(state == battleState.WON)
+        if (state == battleState.WON)
         {
 
             Debug.Log("Thank you so much for participating in my playtest!");
@@ -197,6 +198,7 @@ public class battleSystem : MonoBehaviour
             if (dead)
             {
                 state = battleState.WON;
+                endBattle();
             }
             else
             {
@@ -234,6 +236,7 @@ public class battleSystem : MonoBehaviour
         if (dead)
         {
             state = battleState.LOST;
+            endBattle();
         }
         else
         {
@@ -261,6 +264,7 @@ public class battleSystem : MonoBehaviour
             int heal = Random.Range(1, 3);
             playerUnit.healDamage(heal);
             textUpdate("You gain back " + heal + " health", popUp);
+            textUpdate(("Your HP: " + playerUnit.currentHP), playerHP);
             popUpMethod.OnClick();
             
         }
