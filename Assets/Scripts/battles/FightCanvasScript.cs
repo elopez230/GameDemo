@@ -20,7 +20,7 @@ public class ToggleCanvasOnKeyPress : MonoBehaviour
         if (Input.GetKeyDown(keyToToggleCanvas))
         {
             // Toggle the visibility of the Canvas
-            canvasVisible = !canvasVisible;
+            canvasVisible = true;
 
             // Set the Canvas alpha based on the current state
             canvasGroup.alpha = canvasVisible ? 1f : 0f;
