@@ -145,6 +145,7 @@ public class battleSystem : MonoBehaviour
         if (dead && d20Roll != 1)
         {
             state = battleState.WON;
+            endBattle();
         }
         else
         {
